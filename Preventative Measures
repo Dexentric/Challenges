@@ -19,7 +19,7 @@
     }
 }
 
-3. Lastly, on our challenge code, it is expectec that we update the balance immediately a withdraw function
+3. Lastly, on our challenge code, it is expected that we update the balance immediately a withdraw function
    is called before sending the ether request. This is called Zeroing Out.This makes the person requesting a
    withdraw from this contract, able to withdraw  only what they have. 
    The attacker having a stake on the contract and we setting a limit in the withdraw function, checking if
