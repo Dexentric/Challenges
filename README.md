@@ -16,6 +16,7 @@ NOTE: Read The Comment For Tips
 
 
 PLAYERS     SCORE
+
 Osas        10
 
 Favor       2
