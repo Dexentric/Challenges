@@ -1,0 +1,27 @@
+1. Using msg.sender.send("") which allows external execution but limiting the gas stipend to 2,300 gas for
+   logging an event but not to launch an attack.
+
+   On line 15 of our challenge code, we used msg.sender.call.value("")
+   #(bool sent, ) = msg.sender.call{value: balances[msg.sender]}("");
+   
+2. Using a Mutex modifier to lock the function, blocking any additional calls while the withdraw function is
+   already in use.
+   Example:
+   
+   contract ReentrantEthBank {
+    bool internal locked;
+
+    modifier ReentrantEth() {
+        require(!locked, "No re-entrancy");
+        locked = true;
+        _;
+        locked = false;
+    }
+}
+
+3. Lastly, on our challenge code, it is expected that we update the balance immediately a withdraw function
+   is called before sending the ether request. This is called Zeroing Out.This makes the person requesting a
+   withdraw from this contract, able to withdraw  only what they have. 
+   The attacker having a stake on the contract and we setting a limit in the withdraw function, checking if
+   the attacker is a stake holder.
+
